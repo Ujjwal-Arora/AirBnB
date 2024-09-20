@@ -54,7 +54,9 @@ struct LoginView: View {
                 SignUpView(vm: vm)
             })
 
-        }.padding()
+        }
+        .font(.callout)
+        .padding()
     }
 }
 

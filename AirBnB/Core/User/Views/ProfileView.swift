@@ -47,8 +47,7 @@ struct ProfileView: View {
                     
                 }.font(.caption)
             }else{
-                if let imageUrlString = vm.currentFetchedUser?.profilePhotoUrl{
-                    let url = URL(string: imageUrlString)
+                if let imageUrlString = vm.currentFetchedUser?.profilePhotoUrl,let url = URL(string: imageUrlString){
                     AsyncImage(url: url) { image in
                         image
                             .resizable()
@@ -77,7 +76,9 @@ struct ProfileView: View {
                         .modifier(BoxModifier(backgroundColor: .pink))
                 }
             }
-        }.padding(.horizontal)
+        }
+        .font(.callout)
+        .padding(.horizontal)
     }
     
 }

@@ -101,15 +101,11 @@
 			children = (
 				A8F456CE2C9C92FC00F7899D /* App */,
 				A8F456CF2C9C930400F7899D /* Components */,
+				A8F457012C9E19C900F7899D /* Core */,
 				A8F456E32C9CCE3300F7899D /* Extension */,
-				A8F456D22C9C934100F7899D /* Listing */,
-				A8F456D12C9C933400F7899D /* NewListing */,
-				A8F456D02C9C930C00F7899D /* User */,
 				A8F456AD2C9AEF9000F7899D /* Assets.xcassets */,
 				A8F456B92C9AF42F00F7899D /* GoogleService-Info.plist */,
 				A8F456AF2C9AEF9000F7899D /* Preview Content */,
-				A8F456E82C9CD04300F7899D /* ListingDetailView.swift */,
-				A8F456EA2C9CD0B800F7899D /* FiltersView.swift */,
 			);
 			path = AirBnB;
 			sourceTree = "<group>";
@@ -162,15 +158,15 @@
 			path = NewListing;
 			sourceTree = "<group>";
 		};
-		A8F456D22C9C934100F7899D /* Listing */ = {
+		A8F456D22C9C934100F7899D /* MainListing */ = {
 			isa = PBXGroup;
 			children = (
-				A8F456D32C9C935600F7899D /* ListingService.swift */,
-				A8F456D92C9CB97100F7899D /* ListingViewModel.swift */,
-				A8F456F92C9DA65200F7899D /* ListingView.swift */,
 				A8F456C82C9C771700F7899D /* ListingModel.swift */,
+				A8F456D92C9CB97100F7899D /* ListingViewModel.swift */,
+				A8F456D32C9C935600F7899D /* ListingService.swift */,
+				A8F457022C9E1A1700F7899D /* Views */,
 			);
-			path = Listing;
+			path = MainListing;
 			sourceTree = "<group>";
 		};
 		A8F456E32C9CCE3300F7899D /* Extension */ = {
@@ -188,6 +184,26 @@
 				A8F456F22C9CD1F800F7899D /* LoginView.swift */,
 				A8F456F32C9CD1F800F7899D /* ProfileView.swift */,
 				A8F456F42C9CD1F800F7899D /* SignUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8F457012C9E19C900F7899D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A8F456D22C9C934100F7899D /* MainListing */,
+				A8F456D12C9C933400F7899D /* NewListing */,
+				A8F456D02C9C930C00F7899D /* User */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A8F457022C9E1A1700F7899D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8F456EA2C9CD0B800F7899D /* FiltersView.swift */,
+				A8F456E82C9CD04300F7899D /* ListingDetailView.swift */,
+				A8F456F92C9DA65200F7899D /* ListingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
