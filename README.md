@@ -27,9 +27,9 @@ This project is a **SwiftUI-based Airbnb clone** application that includes Fireb
 
 <img src="Screenshots/LogIn.png" alt="LogIn" width="200"/>
 
-### Sign Up Screen
+### Sign In Screen
 
-<img src="Screenshots/SignIp.png" alt="SignIp" width="200"/>
+<img src="Screenshots/SignIn.png" alt="SignIn" width="200"/>
 
 ### Profile Screen
 
