@@ -25,15 +25,15 @@ This project is a **SwiftUI-based Airbnb clone** application that includes Fireb
 
 ### Log In Screen
 
-<img src="Screenshots/login-screen.png" alt="LogIn" width="200"/>
+<img src="Screenshots/LogIn.png" alt="LogIn" width="200"/>
 
 ### Sign Up Screen
 
-<img src="Screenshots/sign-up-screen.png" alt="SignUp" width="200"/>
+<img src="Screenshots/SignUp.png" alt="SignUp" width="200"/>
 
 ### Profile Screen
 
-<img src="Screenshots/profile-screen.png" alt="Profile" width="200"/>
+<img src="Screenshots/Profile.png" alt="Profile" width="200"/>
 
 ### Explore Listings
 
@@ -41,8 +41,8 @@ This project is a **SwiftUI-based Airbnb clone** application that includes Fireb
 
 ### Filter Listings
 
-<img src="Screenshots/filter-listings-screen.png" alt="Filter" width="200"/>
+<img src="Screenshots/Filter.png" alt="Filter" width="200"/>
 
 ### Add Listings
 
-<img src="Screenshots/launch-screen.png" alt="AddListing" width="200"/>
+<img src="Screenshots/AddListing" alt="AddListing" width="200"/>
