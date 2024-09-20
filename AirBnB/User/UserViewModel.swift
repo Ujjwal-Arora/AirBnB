@@ -14,18 +14,16 @@ import SwiftUI
 
 @MainActor
 class UserViewModel : ObservableObject {
+    @Published var showLogInView = false
+    @Published var showSignUpView = false
+
     @Published var currentFetchedUser : UserModel?
     @Published var currentAuthUser = Auth.auth().currentUser
-    @Published var email = "@g.com"
+    @Published var email = "ujjwal@gmail.com"
     @Published var password = "qqqqqq"
     @Published var fullname = "Ujjwal"
     @Published var profilePhotoUrl = ""
-    @Published var listingPhotosUrl = [String]()
-
     @Published var selectedUserItem : PhotosPickerItem?
-    @Published var selectedListingItem = [PhotosPickerItem]()
-
-    @Published var profilePhoto : Image?
     
     private let userService = UserService()
     
@@ -107,27 +105,4 @@ class UserViewModel : ObservableObject {
             print("❤️\(profilePhotoUrl)")
         }
     }
-    func uploadListingImagesToFirebaseStorage() async throws{
-        guard let uid = currentAuthUser?.uid else { return print("👻 no Auth user found")}
-        self.listingPhotosUrl.removeAll() //check by removing this
-        for item in selectedListingItem {
-            let reference =  Storage.storage().reference(withPath: "listingPics/\(uid)\(UUID().uuidString)")
-            if let imageData = try await item.loadTransferable(type: Data.self){
-                let _ = try await reference.putDataAsync(imageData)
-                
-                let imageUrl = try await reference.downloadURL()
-                self.listingPhotosUrl.append(imageUrl.absoluteString)
-                print("❤️\(listingPhotosUrl)")
-            }
-        }
-        
-    }
-    
-//    func pickerItemToImage() async throws{
-//        do{
-//            profilePhoto = try await selectedItem?.loadTransferable(type: Image.self)
-//        }catch{
-//            print("failed picker item to image conversion")
-//        }
-//    }
 }

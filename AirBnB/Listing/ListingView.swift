@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ListingView: View {
     @StateObject var vm = ListingViewModel()
-   // @State private var showFilters = false
     var body: some View {
         ScrollView{
             NavigationLink(destination: FiltersView( vm: vm)) {
-                SearchAndFilterBar()
+                SearchBar()
             }
             LazyVStack{
                 ForEach(vm.listings) {listing in
@@ -28,16 +27,20 @@ struct ListingView: View {
                                     Text("Rs.\(listing.pricePerNight) per night")
                                 }
                                 Spacer()
-//                                HStack(spacing : 2){
-//                                    Image(systemName: "star.fill")
-//                                    Text(listing.rating.formatted())
-//                                }
                             }.font(.footnote)
                         }
                         
                     }.padding(.horizontal)
                 }
             }.foregroundStyle(.black)
+        }
+        .task {
+            do{
+                try await vm.fetchListings()
+
+            }catch{
+                print("Error fetching listings :\(error.localizedDescription)")
+            }
         }
         .navigationDestination(for: ListingModel.self) { listing in
             ListingDetailView(listing: listing)

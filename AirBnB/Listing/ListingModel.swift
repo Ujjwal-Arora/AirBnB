@@ -27,7 +27,7 @@ struct ListingModel : Identifiable, Codable, Hashable  {
     var Owner : UserModel
     
 }
-enum Amenitie : Int, Identifiable, Codable , Hashable{
+enum Amenitie : Int, Identifiable, Codable , Hashable, CaseIterable{
     case selfCheckIn , superHost
     
     var title : String {
@@ -46,6 +46,9 @@ enum Amenitie : Int, Identifiable, Codable , Hashable{
             return "medal"
         }
     }
+    var selected : Bool{
+        false
+    }
     var description : String {
         switch self {
         case .selfCheckIn:
@@ -59,7 +62,7 @@ enum Amenitie : Int, Identifiable, Codable , Hashable{
         return self.rawValue
     }
 }
-enum Feature : Int, Identifiable, Codable , Hashable{
+enum Feature : Int, Identifiable, Codable , Hashable, CaseIterable{
     case pool,kitchen,wifi,tv,laundry,alarmSystem,fireSafety,petsAllowed,balcony
     
     var title : String {
@@ -106,11 +109,14 @@ enum Feature : Int, Identifiable, Codable , Hashable{
             return "building"
         }
     }
+    var selected : Bool{
+        false
+    }
     var id: Int {
         return self.rawValue
     }
 }
-enum BuildingType : Int , Codable, Identifiable, Hashable{
+enum BuildingType : Int , Codable, Identifiable, Hashable, CaseIterable{
     case house,villa,flat,farmHouse
     
     var title : String {

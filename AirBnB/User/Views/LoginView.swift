@@ -10,8 +10,7 @@ import Firebase
 import FirebaseAuth
 
 struct LoginView: View {
-  //  @Environment(\.dismiss) var dismiss
-    @ObservedObject var vm : AuthViewModel
+    @ObservedObject var vm : UserViewModel
     var body: some View {
         VStack(spacing : 15){
             Spacer()
@@ -28,21 +27,10 @@ struct LoginView: View {
             SecureField("Enter your password", text: $vm.password)
                 .modifier(BoxModifier(backgroundColor: .gray.opacity(0.1)))
                 .textInputAutocapitalization(.never)
-      //      Text(Auth.auth().currentUser?.email ?? "no user")
-
-       //     Text(vm.authService.currentUser?.email ?? "no user")
-//            Button("logIn") {
-//                Task{
-//                    try await vm.logIn()
-//                    if vm.currentAuthUserSession != nil{
-//                        dismiss()
-//                    }
-//                }
-//            }
             Button(action: {
                 Task{
                     try await vm.logIn()
-                    if vm.currentAuthUserSession != nil{
+                    if vm.currentAuthUser != nil{
                         vm.showLogInView = false
                     }
                 }
@@ -52,9 +40,6 @@ struct LoginView: View {
                     .modifier(BoxModifier(backgroundColor: .pink))
             })
             Spacer()
-//            NavigationLink("SVdv") {
-//                SignUpView(vm: vm)
-//            }
             Button {
                 vm.showSignUpView = true
                 
@@ -67,9 +52,6 @@ struct LoginView: View {
             }
             .sheet(isPresented: $vm.showSignUpView, content: {
                 SignUpView(vm: vm)
-//                    .onDisappear(perform: {
-//                        vm.showSignUpView = false
-//                    })
             })
 
         }.padding()
@@ -78,6 +60,6 @@ struct LoginView: View {
 
 #Preview {
     NavigationStack{
-        LoginView(vm: AuthViewModel())
+        LoginView(vm: UserViewModel())
     }
 }

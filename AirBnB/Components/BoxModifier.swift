@@ -21,6 +21,6 @@ struct BoxModifier : ViewModifier {
 }
 #Preview {
     NavigationStack{
-        LoginView(vm: AuthViewModel())
+        LoginView(vm: UserViewModel())
     }
 }

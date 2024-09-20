@@ -10,16 +10,13 @@ import Firebase
 
 @main
 struct AirBnBApp: App {
-//    @StateObject var authService = AuthService()
     init() {
         FirebaseApp.configure()
     }
-    
     var body: some Scene {
         WindowGroup {
             NavigationStack{
-                ContentView()
-                //           .environmentObject(authService)
+                MainTabView()
             }
         }
     }

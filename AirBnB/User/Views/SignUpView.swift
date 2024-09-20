@@ -11,45 +11,16 @@ import FirebaseAuth
 import PhotosUI
 
 struct SignUpView: View {
-   // @Environment(\.dismiss) var dismiss
-    @ObservedObject var vm : AuthViewModel
-    @StateObject var photoPickerVM = PhotoPickerViewModel1()
-    @State private var selectedPickerItemInSignUp : PhotosPickerItem?
-
+    @ObservedObject var vm : UserViewModel
     var body: some View {
         VStack(spacing : 15){
             Spacer()
-            VStack{
-                if let uiImage = photoPickerVM.outputUiImages.first{
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .clipShape(Circle())
-                }else {
-                    Image("logo")
-                        .resizable()
-                }
-            }
-            .scaledToFill()
-            .frame(width: 100, height: 100)
-
-//            Button("click for storage") {
-//                Task{
-//                    try await photoPickerVM.uploadUiImageToFirebaseStorage(folderName: "profileImages")
-//                }
-//            }
-//            Text(photoPickerVM.firebaseStorageImageUrls.first ?? "no url")
+            Image("logo")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
             
-            PhotosPicker(selection: $selectedPickerItemInSignUp) {
-                Text("Select Profile Photo")
-                    .foregroundStyle(.black)
-                    .bold()
-            }.onChange(of: selectedPickerItemInSignUp) { oldValue, newValue in
-                if let item = newValue{
-                    Task{
-                        try await photoPickerVM.loadPhotoPickerImage(selectedItems: [item])
-                    }
-                }
-            }
+            PhotosPicker("Profile Photo", selection: $vm.selectedUserItem)
             
             TextField("Enter fullname", text: $vm.fullname)
                 .modifier(BoxModifier(backgroundColor: .gray.opacity(0.1)))
@@ -60,37 +31,29 @@ struct SignUpView: View {
             SecureField("Enter your password", text: $vm.password)
                 .modifier(BoxModifier(backgroundColor: .gray.opacity(0.1)))
                 .textInputAutocapitalization(.never)
-            
-//            Text(Auth.auth().currentUser?.email ?? "no user")
-//            Text(vm.authService.currentUser?.email ?? "no user")
-
             Button(action: {
                 Task{
-// changed this     if photoPickerVM.outputUiImage != nil {
-                    if selectedPickerItemInSignUp != nil {
-                        try await photoPickerVM.uploadUiImageToFirebaseStorage(folderName: "profileImages")
-                        vm.profilePhotoUrl = photoPickerVM.firebaseStorageImageUrls.first
-                    }
-                    try await vm.signUp()
-                    if vm.currentAuthUserSession != nil{
+                    try await vm.signIn()
+                    if vm.currentAuthUser != nil{
                         vm.showLogInView = false
                         vm.showSignUpView = false
                     }
+                    
                 }
-
             }, label: {
-                Text("SignUp")
+                Text("SignIn")
                     .foregroundStyle(.white)
                     .modifier(BoxModifier(backgroundColor: .pink))
             })
+            
             Spacer()
-
+            
         }.padding()
     }
 }
 
 #Preview {
     NavigationStack{
-        SignUpView(vm: AuthViewModel())
+        SignUpView(vm: UserViewModel())
     }
 }
