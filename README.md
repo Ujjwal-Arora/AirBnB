@@ -37,7 +37,7 @@ This project is a **SwiftUI-based Airbnb clone** application that includes Fireb
 
 ### Explore Listings
 
-![Explore Listings](Screenshots/explore-listings-screen.png)
+![Explore Listings](Screenshots/Explore.png)
 
 ### Filter Listings
 
